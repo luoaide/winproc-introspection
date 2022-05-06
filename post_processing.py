@@ -8,8 +8,9 @@ for line in file:
   
 file.close()
 
+list_of_handles = list(unique_handles)
+list_of_handles.sort()
+
 print("Valid handles:")
-for handle in unique_handles:
+for handle in list_of_handles:
   print(handle)
-  
-  
