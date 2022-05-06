@@ -15,7 +15,7 @@ BOOL WINAPI HookedCloseHandle(HANDLE hObject)
 {
     // Run handles.exe here with PID
     int handle_pid = GetCurrentProcessId();
-    system("C:\\Users\\user\\Desktop\\project\\winproc-introspection\\src\\Handle\\handle.exe -p " + handle_pid);
+    system("C:\\Users\\user\\Desktop\\project\\winproc-introspection\\src\\Handle\\handle.exe -p " + handle_pid + " > handles.txt");
     return True_CloseHandle(hObject);
 }
 
