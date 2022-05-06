@@ -13,7 +13,9 @@ BOOL (WINAPI *True_CloseHandle)(HANDLE) = CloseHandle;
 // Our intercept function
 BOOL WINAPI HookedCloseHandle(HANDLE hObject)
 {
-    printf("This works");
+    // Run handles.exe here with PID
+    int handle_pid = GetCurrentProcessId();
+    system("C:\\Users\\user\\Desktop\\project\\winproc-introspection\\src\\Handle\\handle.exe -p " + handle_pid);
     return True_CloseHandle(hObject);
 }
 
