@@ -26,11 +26,24 @@ DWORD GetPID() {
 }
 
 int main(int argc, char* argv[]) {
-  char* buffer = "inject_me.dll";
-  int procID = GetPID();
-  if(0 == procID) {
-    ExitProcess(0);
-  }
+  // call as winproc_introspect.exe [executable to analyze]
+  char* buffer = "";
+  char* path = argv[1]
+
+  // BOOL CreateProcessA(
+  //   [in, optional]      LPCSTR                lpApplicationName,
+  //   [in, out, optional] LPSTR                 lpCommandLine,
+  //   [in, optional]      LPSECURITY_ATTRIBUTES lpProcessAttributes,
+  //   [in, optional]      LPSECURITY_ATTRIBUTES lpThreadAttributes,
+  //   [in]                BOOL                  bInheritHandles,
+  //   [in]                DWORD                 dwCreationFlags,
+  //   [in, optional]      LPVOID                lpEnvironment,
+  //   [in, optional]      LPCSTR                lpCurrentDirectory,
+  //   [in]                LPSTARTUPINFOA        lpStartupInfo,
+  //   [out]               LPPROCESS_INFORMATION lpProcessInformation
+  // );
+  
+  BOOL running = CreateProcessA(path, );
   HANDLE process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, procID);
   // we want to get LoadLibrary from it's dll, which is "kernel32.dll"
   LPVOID addr = (LPVOID)GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");

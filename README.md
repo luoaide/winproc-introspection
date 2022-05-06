@@ -9,8 +9,12 @@ The goal is to provide the analyst with a snapshot of the system resources used
 by the process.
 
 
-## What
+## Overview
+1. Run our program with a PID as input and interval
+2. Print current handles
+3. EITHER: a handle is closed OR at time interval handles runoi
 
+## What
 Look inside a running process... what useful information can we grab
 Every process has a handle table in memory
 API calls all return handles to resources... get added to table.
