@@ -1,9 +1,7 @@
-#include <windows.h>
 #include <stdio.h>
-#include "detours.h"
-#include "detver.h"
-#include "syelog.h"
-#pragma comment(lib, "detours.lib")
+#include <windows.h>
+#include <TlHelp32.h>
+#include <string.h>
 #pragma comment(lib, "user32.lib")
 #define WIN32_DEFAULT_LIBS
 
