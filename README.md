@@ -1,7 +1,7 @@
 # Windows Process Introspection
 
 ## Input
-PE32 File.
+the path to the target executable and a time interval
 
 ## Output
 A table of handles that shows handles by type that the process interacted with.
@@ -10,24 +10,11 @@ by the process.
 
 
 ## Overview
-1. Run our program with a PID as input and interval
-2. Print current handles
-3. EITHER: a handle is closed OR at time interval handles runoi
-
-## What
-Look inside a running process... what useful information can we grab
-Every process has a handle table in memory
-API calls all return handles to resources... get added to table.
-
-Is it a snapshot? Or do we return results in live time or when it terminates?
-
-closeHandle removes a handle from the process table.
-
-
-How do we look inside a processes memory space... DLL injection? We need to hook
-onto the process.
-
-Existing Tool --> sysInternals gives us some functionality
-handle64 and handle (32 bit) gives us some abilities
-
-this shows us all the handles that are currently being used by the process... the problem is that this is just a snapshot in time. We want to reverse engineer the handle64 tool and analyze all the handles over the lifespan.
+1. Run our program with a path to the target executable
+2. We will start a suspended process running your target
+3. We will perform DLL injection on that process to hook CloseHandle
+4. We will then start your process.
+5. At the designated time interval, we will run handles.exe (from Sysinternals)
+6. Whenever CloseHandle is called, we will log the resource being closed.
+7. When the target process finishes or the user interupts, we will output results
+8. The logs of resource names (handles.txt) will be filtered and we will present the set of all resources touched by the target.
